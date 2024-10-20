@@ -17,7 +17,7 @@ use std::path::Path;
             return;
         }
 
-        let mut child = Command::new(command)
+        let child = Command::new(command)
             .args(args)
             .spawn();
 
