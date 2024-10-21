@@ -2,15 +2,25 @@ mod modules {
     pub mod input;
     pub mod command;
     pub mod alias;
+    pub mod config;
 }
 
-use modules::{alias::AliasManager, command::execute_command};
+use modules::{alias::AliasManager, command::execute_command, config::Config};
+use std::path::Path;
 
 
 fn main() {
     let mut alias_manager = AliasManager::new();
+    let config_file = "config.json";
+
+    let mut config = if Path::new(config_file).exists() {
+        Config::load_from_file(config_file).unwrap()
+    } else {
+        Config::new("user")  // Usuario por defecto
+    };
 
     loop {
+        print!("{}> ", config.username);
         let input = modules::input::read_input(&alias_manager);
 
         if input == "exit" {
@@ -39,7 +49,7 @@ fn main() {
             .cloned()
             .unwrap_or_else(|| command.to_string());
 
-        execute_command(&resolved_command, args);
+        execute_command(&resolved_command, args, &mut config);
     }
 }
 

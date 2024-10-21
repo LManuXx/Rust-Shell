@@ -2,8 +2,9 @@ use std::process::Command;
 use std::env;
 use std::path::Path;
 use std::fs;
+use crate::modules::config::Config;
 
-    pub fn execute_command(command: &str, args: &[&str]) {
+    pub fn execute_command(command: &str, args: &[&str], config: &mut Config) {
 
         if command == "cd" {
             if args.is_empty() {
@@ -16,6 +17,18 @@ use std::fs;
             }
             return;
         }
+
+        if command == "setprompt" {
+            if args.len() != 1 {
+                eprintln!("Usage: setprompt <username>");
+            } else {
+                config.username = args[0].to_string();
+                config.save_to_file("config.json");
+            }
+            return;
+        }
+        
+
 
         let child = Command::new(command)
             .args(args)

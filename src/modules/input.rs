@@ -5,12 +5,9 @@ use crate::modules::alias::AliasManager;
 use crate::modules::command::autocomplete_command;
 
 
-
 pub fn read_input(alias_manager: &AliasManager) -> String {
     let stdin = io::stdin();
     let mut stdout = io::stdout();
-
-    write!(stdout, "> ").unwrap();
     stdout.flush().unwrap();
 
     let mut input = String::new();
@@ -27,7 +24,7 @@ pub fn read_input(alias_manager: &AliasManager) -> String {
                 print!("\r> {} ", input);
                 stdout.flush().unwrap();
             },
-            Key::Down => {
+            Key::Ctrl('a') => {
                 // Lógica de autocompletado
                 let mut matches = alias_manager.autocomplete_alias(&input);
                 matches.append(&mut autocomplete_command(&input));
