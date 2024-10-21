@@ -3,9 +3,10 @@ use termion::input::TermRead;
 use std::io::{self, Write};
 use crate::modules::alias::AliasManager;
 use crate::modules::command::autocomplete_command;
+use crate::modules::history::CommandHistory;
 
 
-pub fn read_input(alias_manager: &AliasManager) -> String {
+pub fn read_input(alias_manager: &AliasManager, history: &mut CommandHistory) -> String {
     let stdin = io::stdin();
     let mut stdout = io::stdout();
     stdout.flush().unwrap();
@@ -39,6 +40,22 @@ pub fn read_input(alias_manager: &AliasManager) -> String {
 
                 stdout.flush().unwrap();
             },
+            Key::Up => {
+                if let Some(previous) = history.previous_command() {
+                    input.clear();
+                    input.push_str(previous);
+                    write!(stdout, "\r\x1B[K> {}", input).unwrap();  // Solo el prompt y el input
+                    stdout.flush().unwrap();
+                }
+            }
+            Key::Down => {
+                if let Some(next) = history.next_command() {
+                    input.clear();
+                    input.push_str(next);
+                    write!(stdout, "\r\x1B[K> {}", input).unwrap();  // Solo el prompt y el input
+                    stdout.flush().unwrap();
+                }
+            }
             _ => {}
         }
     }

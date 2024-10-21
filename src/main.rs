@@ -3,9 +3,10 @@ mod modules {
     pub mod command;
     pub mod alias;
     pub mod config;
+    pub mod history;
 }
 
-use modules::{alias::AliasManager, command::execute_command, config::Config};
+use modules::{alias::AliasManager, command::execute_command, config::Config, history::CommandHistory};
 use std::path::Path;
 
 
@@ -19,9 +20,12 @@ fn main() {
         Config::new("user")  // Usuario por defecto
     };
 
+    let mut history = CommandHistory::load_from_file("history.txt").unwrap_or_else(|_| CommandHistory::new());
+
+
     loop {
         print!("{}> ", config.username);
-        let input = modules::input::read_input(&alias_manager);
+        let input = modules::input::read_input(&alias_manager,&mut history);
 
         if input == "exit" {
             break;
@@ -34,6 +38,9 @@ fn main() {
 
         let command = tokens[0];
         let args = &tokens[1..];
+
+        history.add_command(&input);
+        history.save_to_file("history.txt").expect("Failed to save history");
 
         if command == "alias" {
             if args.len() != 2 {
