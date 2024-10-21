@@ -11,7 +11,7 @@ fn main() {
     let mut alias_manager = AliasManager::new();
 
     loop {
-        let input = modules::input::read_input();
+        let input = modules::input::read_input(&alias_manager);
 
         if input == "exit" {
             break;
@@ -40,6 +40,6 @@ fn main() {
             .unwrap_or_else(|| command.to_string());
 
         execute_command(&resolved_command, args);
-
     }
 }
+
