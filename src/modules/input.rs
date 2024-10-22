@@ -1,6 +1,7 @@
 use termion::event::Key;
 use termion::input::TermRead;
-use std::io::{self, Write};
+use termion::raw::IntoRawMode;
+use std::io::{self, stdout, Write};
 use crate::modules::alias::AliasManager;
 use crate::modules::command::autocomplete_command;
 use crate::modules::history::CommandHistory;
@@ -8,7 +9,7 @@ use crate::modules::history::CommandHistory;
 
 pub fn read_input(alias_manager: &AliasManager, history: &mut CommandHistory) -> String {
     let stdin = io::stdin();
-    let mut stdout = io::stdout();
+    let mut stdout = stdout().into_raw_mode().unwrap();
     stdout.flush().unwrap();
 
     let mut input = String::new();
@@ -44,7 +45,7 @@ pub fn read_input(alias_manager: &AliasManager, history: &mut CommandHistory) ->
                 if let Some(previous) = history.previous_command() {
                     input.clear();
                     input.push_str(previous);
-                    write!(stdout, "\r\x1B[K> {}", input).unwrap();  // Solo el prompt y el input
+                    write!(stdout, "\n> {}", input).unwrap();  // Solo el prompt y el input
                     stdout.flush().unwrap();
                 }
             }

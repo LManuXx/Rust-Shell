@@ -1,3 +1,9 @@
 ls
 cd src
 ls
+ls
+cd src
+cd src
+ls
+lsexit
+lsexitexit
