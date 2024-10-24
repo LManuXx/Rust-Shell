@@ -23,22 +23,8 @@ ls
 pwd
 ls
 cd src
+cd src
+pwd
 ls
+cd modules
 pwd
-cd src
-ls
-pwd
-cd src
-ls
-cd src
-ls
-cd src
-pwd
-setpromt
-setprompt fCode
-pwd
-setprompt fCode
-cd src
-cd src
-pwd
-exit

@@ -7,3 +7,29 @@ cd src
 ls
 lsexit
 lsexitexit
+setprompt Paul
+ls
+ls
+cd src
+ls
+setprompt manu
+ls
+hola
+ls
+ls
+ls
+ls
+ls
+pwd
+ls
+cd src
+ls
+pwd
+cd src
+ls
+pwd
+cd src
+ls
+cd src
+ls
+cd src
