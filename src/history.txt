@@ -33,12 +33,14 @@ ls
 cd src
 ls
 cd src
-pwd
-setpromt
-setprompt fCode
-pwd
-setprompt fCode
+ls
 cd src
+setprompt fCode
+ls
 cd src
 pwd
+ls
+cd src
+ls
+setprompt manu
 exit

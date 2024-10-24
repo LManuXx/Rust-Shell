@@ -31,11 +31,17 @@ pub fn read_input(alias_manager: &AliasManager, history: &mut CommandHistory, co
                 stdout.flush().unwrap();
             },
             Key::Backspace => {
-                input.pop();
-                print!("\r");
-                print_prompt(&config);
-                print!("{}", input);
-                stdout.flush().unwrap();
+                if !input.is_empty() {
+                    input.pop(); 
+                    print!("\r");
+                    print_prompt(&config);
+                    print!("{}", input);
+                    print!(" \r");
+                    print_prompt(&config);
+                    print!("{}", input);
+            
+                    stdout.flush().unwrap();
+                }
             },
             Key::Ctrl('a') => {
                 let mut matches = alias_manager.autocomplete_alias(&input);

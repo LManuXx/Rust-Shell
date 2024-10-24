@@ -33,3 +33,11 @@ ls
 cd src
 ls
 cd src
+ls
+cd src
+setprompt fCode
+ls
+cd src
+pwd
+ls
+cd src

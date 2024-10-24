@@ -4,5 +4,5 @@ use std::io::{self, Write};
 
 pub fn print_prompt(config: &Config) {
     print!("{}> ", config.username);
-    io::stdout().flush().unwrap(); // Asegura que se imprime en la terminal inmediatamente
+    io::stdout().flush().unwrap();
 }
