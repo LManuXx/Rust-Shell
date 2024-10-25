@@ -1,7 +1,6 @@
 use std::process::Command;
 use std::env;
 use std::path::Path;
-
 use crate::modules::alias::AliasManager;
 use crate::modules::config::Config;
 

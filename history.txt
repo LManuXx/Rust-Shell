@@ -1,57 +1,20 @@
 ls
-cd src
-ls
-ls
-cd src
-cd src
-ls
-lsexit
-lsexitexit
-setprompt Paul
-ls
-ls
-cd src
-ls
-setprompt manu
-ls
-hola
-ls
-ls
-ls
-ls
-ls
+pwd
 pwd
 ls
-cd src
-ls
-pwd
-cd src
-ls
-pwd
-cd src
-ls
-cd src
-ls
-cd src
-ls
-cd src
-setprompt fCode
-ls
-cd src
-pwd
-ls
-cd src
-ls
-pwd
 ls
 setprompt pepe
-ls
-ls
-setprompt manu
+setprompt pepe
+exit
 pwd
-setprompt 
+pwd
+ls
+ls
+setprompt pepe
+setprompt pepe
 exit
-exit
-exit
-exit
+ls
+./myscript.sh
+./myscript.sh
+setprompt manu
 exit

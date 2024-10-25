@@ -47,6 +47,7 @@ pub fn read_input(history: &mut CommandHistory, config:&Config) -> String {
                     input.push_str(previous);
                     print!("\r");
                     print_prompt(&config);
+                    print!("\x1B[K");
                     print!("{}", input);
                     stdout.flush().unwrap();
                 }
@@ -57,6 +58,7 @@ pub fn read_input(history: &mut CommandHistory, config:&Config) -> String {
                     input.push_str(next);
                     print!("\r");
                     print_prompt(&config);
+                    print!("\x1B[K");
                     print!("{}", input);
                     stdout.flush().unwrap();
                 }

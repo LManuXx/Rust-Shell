@@ -32,7 +32,11 @@ fn main() {
         }
 
         if input.ends_with(".sh") {
-            if let Err(e) = execute_script(&input, &mut alias_manager, &mut config, &mut history) {
+            
+            history.add_command(&input);
+            history.save_to_file("history.txt").expect("Failed to save history");
+
+            if let Err(e) = execute_script(&input, &mut alias_manager, &mut config) {
                 eprintln!("Error al ejecutar el script: {}", e);
             }
             continue;
