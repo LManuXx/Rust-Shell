@@ -41,3 +41,15 @@ cd src
 pwd
 ls
 cd src
+ls
+pwd
+ls
+setprompt pepe
+ls
+ls
+setprompt manu
+pwd
+setprompt 
+exit
+exit
+exit

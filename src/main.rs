@@ -5,9 +5,10 @@ mod modules {
     pub mod config;
     pub mod history;
     pub mod prompt;
+    pub mod execute_sh;
 }
 
-use modules::{alias::AliasManager, command::handle_command, config::Config, history::CommandHistory, prompt::print_prompt};
+use modules::{alias::AliasManager, command::handle_command, config::Config, history::CommandHistory, prompt::print_prompt, execute_sh::execute_script};
 use std::path::Path;
 
 fn main() {
@@ -27,6 +28,13 @@ fn main() {
         let input = modules::input::read_input(&alias_manager, &mut history, &mut config);
 
         if input.is_empty() {
+            continue;
+        }
+
+        if input.ends_with(".sh") {
+            if let Err(e) = execute_script(&input, &mut alias_manager, &mut config, &mut history) {
+                eprintln!("Error al ejecutar el script: {}", e);
+            }
             continue;
         }
 

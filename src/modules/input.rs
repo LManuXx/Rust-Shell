@@ -75,7 +75,7 @@ pub fn read_input(alias_manager: &AliasManager, history: &mut CommandHistory, co
                     input.clear();
                     input.push_str(next);
                     print!("\r");
-                    print_prompt(&config); // Imprime el prompt con el nombre
+                    print_prompt(&config);
                     print!("{}", input);
                     stdout.flush().unwrap();
                 }
