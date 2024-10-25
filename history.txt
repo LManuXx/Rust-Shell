@@ -53,3 +53,5 @@ setprompt
 exit
 exit
 exit
+exit
+exit

@@ -25,7 +25,7 @@ fn main() {
 
     loop {
         print_prompt(&config);
-        let input = modules::input::read_input(&alias_manager, &mut history, &mut config);
+        let input = modules::input::read_input(&mut history, &mut config);
 
         if input.is_empty() {
             continue;

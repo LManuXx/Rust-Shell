@@ -1,7 +1,7 @@
 use std::process::Command;
 use std::env;
 use std::path::Path;
-use std::fs;
+
 use crate::modules::alias::AliasManager;
 use crate::modules::config::Config;
 
@@ -62,23 +62,4 @@ pub fn execute_command(command: &str, args: &[&str]) {
     }
 }
 
-pub fn autocomplete_command(partial: &str) -> Vec<String> {
-    let paths = ["/bin", "/usr/bin", "/usr/local/bin"];
-    let mut matches = Vec::new();
 
-    for path in &paths {
-        if let Ok(entries) = fs::read_dir(path) {
-            for entry in entries {
-                if let Ok(entry) = entry {
-                    let file_name = entry.file_name();
-                    let command = file_name.to_string_lossy();
-                    if command.starts_with(partial) {
-                        matches.push(command.to_string());
-                    }
-                }
-            }
-        }
-    }
-
-    matches
-}
