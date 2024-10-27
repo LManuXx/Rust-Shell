@@ -6,6 +6,7 @@ mod modules {
     pub mod history;
     pub mod prompt;
     pub mod execute_sh;
+    pub mod system_info;
 }
 
 use modules::{alias::AliasManager, command::handle_command, config::Config, history::CommandHistory, prompt::print_prompt, execute_sh::execute_script};

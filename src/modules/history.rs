@@ -3,7 +3,7 @@ use std::io::{self, BufRead, BufReader, Write};
 
 pub struct CommandHistory {
     pub history: Vec<String>,
-    pub position: Option<usize>, // Para manejar el acceso a los comandos anteriores
+    pub position: Option<usize>,
 }
 
 impl CommandHistory {

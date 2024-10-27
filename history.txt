@@ -18,3 +18,34 @@ ls
 ./myscript.sh
 setprompt manu
 exit
+setprompt user
+ls
+pwd
+./myscript.h
+./myscript.sh
+exit
+setprompt manu
+ls
+pwd
+./myscript.sh
+cat myscript.sh
+exit
+ls
+setprompt manu
+./myscript.sh
+touch listo
+clear
+ls
+pwd
+setprompt manu
+./myscript.sh
+cd src
+clear
+setpromt manu
+setprompt manu
+ls
+pwd
+cd src
+exit
+sysinfo
+exit

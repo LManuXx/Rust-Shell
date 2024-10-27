@@ -3,6 +3,7 @@ use std::env;
 use std::path::Path;
 use crate::modules::alias::AliasManager;
 use crate::modules::config::Config;
+use crate::modules::system_info::show_sys_info;
 
 pub fn handle_command(command: &str, args: &[&str], alias_manager: &mut AliasManager, config: &mut Config) -> bool {
     if command == "exit" {
@@ -39,6 +40,11 @@ pub fn handle_command(command: &str, args: &[&str], alias_manager: &mut AliasMan
                 eprintln!("cd: {}", e);
             }
         }
+        return true;
+    }
+
+    if command == "sysinfo" {
+        show_sys_info();
         return true;
     }
 
